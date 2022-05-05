@@ -21,7 +21,7 @@ block content
         var form = document.getElementById("registerForm")
 
         function validateForm(){
-            if(passwordField.value !== passwordConfirmField){
+            if(passwordField.value !== passwordConfirmField.value){
                 alert("Passwords do no match. Please try again.")
             }else{
                 form.submit()
