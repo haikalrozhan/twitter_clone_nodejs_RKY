@@ -3,6 +3,9 @@ const app = express();
 const middleware = require("./middleware");
 const path = require("path");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv").config();
+const connectDB = require("./database");
+
 
 const port = 3003;
 
