@@ -6,11 +6,10 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
 const connectDB = require("./database");
 
-
 const port = 3003;
 
 const server = app.listen(port, () => {
-  console.log("Server listening on port" + port);
+  console.log("Server listening on port " + port);
 });
 
 app.set("view engine", "pug");
