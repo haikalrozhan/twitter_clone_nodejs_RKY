@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
 const User = require("../schemas/UserSchema");
 
 app.set("view engine", "pug");
@@ -33,6 +34,8 @@ router.post("/", async (req, res, next) => {
     if (user == null) {
       // No user found
       var data = req.body;
+      data.password = await bcrypt.hash(password, 10)
+
       User.create(data).then((user) => console.log(user));
     } else {
       // User found
@@ -41,6 +44,7 @@ router.post("/", async (req, res, next) => {
       } else {
         payload.errorMessage = "Username already in use.";
       }
+      res.status(200).render("register", payload);
     }
   } else {
     payload.errorMessage = "Make sure each field has a valid value.";
